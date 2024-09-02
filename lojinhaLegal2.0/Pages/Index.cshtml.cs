@@ -1,20 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using LojinhaLegal.Models.context;
+using LojinhaLegal.Models.entity;
 
-namespace LojinhaLegal.Pages
+namespace lojinhaLegal.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly LojinhaLegal.Models.context.DataContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(LojinhaLegal.Models.context.DataContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<Produto> Produto { get;set; } = default!;
 
+        public async Task OnGetAsync()
+        {
+            Produto = await _context.ProdutoEntity.ToListAsync();
         }
     }
 }
