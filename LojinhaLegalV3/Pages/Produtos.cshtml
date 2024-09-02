@@ -1,0 +1,16 @@
+﻿@page
+@model LojinhaLegalV3.Pages.ProdutosModel
+
+<h2>Lista de Produtos</h2>
+
+<ul>
+    @foreach (var produto in Model.Produtos)
+    {
+        <li>
+            <strong>@produto.Nome</strong> - @produto.Preco:C <br />
+            <img src="~/imagens/@produto.Imagem" alt="@produto.Nome" /><br />
+            <p>@produto.Descricao</p>
+            <p>Categoria: @produto.Categoria</p>
+        </li>
+    }
+</ul>

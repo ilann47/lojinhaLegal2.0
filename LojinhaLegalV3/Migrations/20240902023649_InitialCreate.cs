@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace lojinhaLegal2._0.Migrations
+namespace LojinhaLegalV3.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -23,7 +23,7 @@ namespace lojinhaLegal2._0.Migrations
                     Nome = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Preco = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    ImagemUrl = table.Column<string>(type: "longtext", nullable: false)
+                    Imagem = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Descricao = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
