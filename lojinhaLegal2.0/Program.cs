@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using LojinhaLegal.Data; // Apenas este namespace é necessário
-using LojinhaLegal.Data.LojinhaLegal.Data;
+using LojinhaLegal.Data;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +21,29 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+
+// Adicionar dados ao banco de dados durante a inicialização
+using (var scope = app.Services.CreateScope())
+{
+	var services = scope.ServiceProvider;
+
+	try
+	{
+		SeedData.Initialize(services);
+	}
+	catch (Exception ex)
+	{
+		var logger = services.GetRequiredService<ILogger<Program>>();
+		logger.LogError(ex, "An error occurred seeding the DB.");
+	}
+}
 if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Error");
 	app.UseHsts();
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

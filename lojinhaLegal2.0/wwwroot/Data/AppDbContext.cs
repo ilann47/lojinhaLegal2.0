@@ -2,10 +2,6 @@
 
 namespace LojinhaLegal.Data
 {
-	using Microsoft.EntityFrameworkCore;
-
-	namespace LojinhaLegal.Data
-	{
 		public class AppDbContext : DbContext
 		{
 			public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -27,6 +23,5 @@ namespace LojinhaLegal.Data
 			public string Descricao { get; set; }
 			public string Categoria { get; set; } // Você pode adicionar mais propriedades conforme necessário
 		}
-	}
 
 }
