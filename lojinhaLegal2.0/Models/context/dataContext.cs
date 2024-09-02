@@ -3,16 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LojinhaLegal.Models.context
 {
-    public class dataContext : DbContext
+    public class DataContext : DbContext
     {
-        public dataContext(DbContextOptions<dataContext> options)
+        public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
-            if (Database.GetPendingMigrations().Any())
-            {
-                Database.Migrate();
 
-            }
         }
 
         public DbSet<Produto> ProdutoEntity { get; set; }

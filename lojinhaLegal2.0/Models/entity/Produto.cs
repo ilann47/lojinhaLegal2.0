@@ -5,7 +5,7 @@ namespace LojinhaLegal.Models.entity
 {
     public class Produto
     {
-        PrimaryKeyAttribute id;
+        long id;
         string name;
         string value;
         string description;
@@ -19,6 +19,11 @@ namespace LojinhaLegal.Models.entity
             this.name = name;
             this.value = value;
             this.description = description;
+        }
+        public long Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Name

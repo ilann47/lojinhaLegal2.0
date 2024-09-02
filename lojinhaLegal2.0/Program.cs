@@ -1,15 +1,23 @@
-using LojinhaLegal.Models.context;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using System;
+using LojinhaLegal.Models.context;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 23)))); // Ajuste a versão conforme sua instalação
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<dataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")));
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+var app = builder.Build();
+// Adicione o serviço do DbContext com a string de conexão do MySQL
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
