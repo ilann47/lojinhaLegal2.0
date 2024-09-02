@@ -6,12 +6,25 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
 using LojinhaLegal.Models.context;
+using LojinhaLegal.Models.Repositories;
+using lojinhaLegal.Repository.Interface;
+using System.Configuration;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 23)))); // Ajuste a versão conforme sua instalação
+//builder.Services.AddDbContext<DataContext>(options =>
+//    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+//        new MySqlServerVersion(new Version(8, 0, 23)))); // Ajuste a versão conforme sua instalação
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<DataContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+    services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+    // Outros serviços
+}
 // Add services to the container.
 builder.Services.AddRazorPages();
 
