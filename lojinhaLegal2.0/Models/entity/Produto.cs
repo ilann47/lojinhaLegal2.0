@@ -14,7 +14,7 @@ namespace LojinhaLegal.Models.entity
             this.value = string.Empty;
             this.description = string.Empty;
         }
-        public Produto(string name, string value, string description)
+        public Produto(string name, string value, string description, string imagem)
         {
             this.name = name;
             this.value = value;
@@ -30,7 +30,6 @@ namespace LojinhaLegal.Models.entity
         {
             get { return this.name; } set { this.name = value; }
         }
-
 
         public string Value
         {

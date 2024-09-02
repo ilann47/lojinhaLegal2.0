@@ -22,7 +22,7 @@ builder.Services.AddDbContext<DataContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 23))));
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
-//    // Outros serviços
+//    // OWutros serviços
 
 // Add services to the container.
 builder.Services.AddRazorPages();
