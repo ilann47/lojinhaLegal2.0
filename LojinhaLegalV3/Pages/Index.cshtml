@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.Preco)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Imagem)
+                <img src="@item.Imagem" alt="@item.Nome" style="max-width: 100px; max-height: 100px;" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descricao)

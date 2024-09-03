@@ -7,7 +7,7 @@
     @foreach (var produto in Model.Produtos)
     {
         <li>
-            <strong>@produto.Nome</strong> - @produto.Preco:C <br />
+            <strong>@produto.Preco</strong> - @produto.Preco:C <br />
             <img src="@produto.Imagem" alt="@produto.Nome" /><br />
             <p>@produto.Descricao</p>
             <p>Categoria: @produto.Categoria</p>
