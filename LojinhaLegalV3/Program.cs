@@ -24,6 +24,7 @@ var app = builder.Build();
 
 
 // Adicionar dados ao banco de dados durante a inicialização
+/*
 using (var scope = app.Services.CreateScope())
 {
 	var services = scope.ServiceProvider;
@@ -43,7 +44,7 @@ if (!app.Environment.IsDevelopment())
 	app.UseExceptionHandler("/Error");
 	app.UseHsts();
 }
-
+*/
 
 
 app.UseHttpsRedirection();
