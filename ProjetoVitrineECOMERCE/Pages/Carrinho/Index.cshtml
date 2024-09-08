@@ -1,0 +1,40 @@
+﻿@page
+@model ProjetoVitrineECOMERCE.Pages.Carrinho.IndexModel
+@{
+    ViewData["Title"] = "Carrinho de Compras";
+}
+
+<h1>Carrinho de Compras</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome do Boné</th>
+            <th>Quantidade</th>
+            <th>Preço Unitário</th>
+            <th>Preço Total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CarrinhoItens)
+        {
+            <tr>
+                <td>@item.Bone.Nome</td>
+                <td>@item.Quantidade</td>
+                <td>@item.Bone.Preco</td>
+                <td>@item.PrecoTotal</td>
+                <td>
+                    <form method="post" asp-page-handler="Remover" asp-route-id="@item.Bone.Id">
+                        <button type="submit" class="btn btn-danger">Remover</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        }
+    </tbody>
+</table>
+
+<form method="post" asp-page-handler="Limpar">
+    <button type="submit" class="btn btn-warning">Limpar Carrinho</button>
+</form>
